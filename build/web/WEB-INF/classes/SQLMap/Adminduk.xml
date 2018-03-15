@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Mapper.AdmindukMapper" >
+    <select id="getFuzzyMatchCrimeJoinFIUReport" resultType="Adminduk">
+       SELECT c.name as Nama, c.nationality, c.link, c.DOB, 
+       C.crime_indication as crimeIndication,c.source as source
+       FROM crime c, fiureport f
+       WHERE  soundex(c.name)=soundex(f.name)
+    </select>
+    <select id="getFuzzyMatchCrimeJoinIntelReport" resultType="Adminduk">
+       SELECT c.name as Nama, c.nationality, c.link, c.DOB, 
+       C.crime_indication as crimeIndication,c.source as source
+       FROM crime c, intelreport i
+       WHERE  soundex(c.name)=soundex(i.name)
+    </select>
+    <select id="getFuzzyMatchCrimeJoinPep" resultType="Adminduk">
+       SELECT c.name as Nama, c.nationality, c.link, c.DOB, 
+       C.crime_indication as crimeIndication,c.source as source
+       FROM crime c, peplist p
+       WHERE  soundex(c.name)=soundex(p.nama)
+    </select>
+    <select id="getFuzzyMatchAdmindukJoinCrime" resultType="Adminduk">
+       SELECT cz.Nama,cz.tanggalLahir, cz.TempatLahir
+       FROM crime c, citizenship cz
+       WHERE  soundex(c.name)=soundex(cz.nama)
+    </select>
+</mapper>

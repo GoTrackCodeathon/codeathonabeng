@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="Mapper.FIUReportMapper" >
+    <select id="getFIUReportByCategory" resultType="FIUReport" parameterType="FIUReport">
+       SELECT f.acc_number as accNumber, f.name as name, f.DOB as dob, f.destination_acc as destinationAcc,
+       f.crime_indication as crimeIndication
+       FROM fiureport f
+       WHERE 1=1
+        <if test="name != null">
+           AND f.name=#{name}
+        </if>
+        <if test="dob != null">
+           AND f.DOB=#{dob}
+        </if>
+    </select>
+</mapper>

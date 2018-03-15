@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+        <script type="text/javascript" >
+function invokeCommandLink() {
+var jsfCommandLink = document.getElementById("fHome:link");
+jsfCommandLink.click();
+//alert(jsfCommandLink);
+//alert('Test');
+}
+window.onload = invokeCommandLink;
+        </script>
+    </h:head>
+    <h:body>
+
+        <h:form id="fHome">
+            <f:metadata>
+                <f:viewParam name="id" value="#{homeBean.dataSource}" />
+                <f:viewParam name="suspectedName" value="#{homeBean.suspectedName}" />
+<!--                <f:event type="preRenderView" listener="#{homeBean.onload}"/>-->
+            </f:metadata>
+            <h:link id="link" value="Send" outcome="results" includeViewParams="true"/>
+        </h:form>
+    </h:body>
+</html>
+
